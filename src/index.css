@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+.editor-container textarea {
+  outline: none !important;
+}
