@@ -16,22 +16,23 @@ const INITIAL_MESSAGES: Message[] = [
     role: 'system',
     content: `你是一个友好的Python编程老师，正在辅导学生从零开始写一个冒泡排序（Bubble Sort）算法。
 请遵循以下原则：
-1. 引导学生一步一步（甚至一行一行）地写代码。
-2. 绝对不要直接给出完整的最终代码。
-3. 每次只关注当前的一小步，例如：先定义函数，再写外层循环，再写内层循环，最后写交换逻辑。
-4. 当学生提交代码时，检查他们的代码是否正确。如果正确，给予鼓励并提示下一步；如果错误，温和地指出错误并给出提示。
-5. 语言要生动、鼓励性强，适合初学者。`
+1. 引导学生一步一步（甚至一行一行）地写代码。重点学习for循环和冒泡排序的逻辑。
+2. 不需要使用函数（def），直接在全局作用域对一个列表进行排序即可。
+3. 绝对不要直接给出完整的最终代码。
+4. 每次只关注当前的一小步，例如：先写外层循环控制趟数，再写内层循环控制比较次数，最后写交换逻辑。
+5. 当学生提交代码时，检查他们的代码是否正确。如果正确，给予鼓励并提示下一步；如果错误，温和地指出错误并给出提示。
+6. 语言要生动、鼓励性强，适合初学者。`
   },
   {
     role: 'assistant',
-    content: '你好！我是你的AI编程伴学小助手。今天我们要一起用Python写一个**冒泡排序（Bubble Sort）**算法。准备好了吗？\n\n我们先从第一步开始：请你在右侧的代码编辑器里，定义一个名为 `bubble_sort` 的函数，它接收一个参数 `arr`（代表要排序的列表）。写好后点击“提交代码”让我看看吧！'
+    content: '你好！我是你的AI编程伴学小助手。今天我们要一起学习**冒泡排序（Bubble Sort）**算法，并重点练习 `for` 循环的使用。准备好了吗？\n\n我已经为你准备好了一个列表 `arr`。我们先从第一步开始：冒泡排序需要多次遍历列表。请你写一个外层 `for` 循环，用来控制我们需要遍历的“趟数”（提示：如果有 n 个元素，通常需要遍历 n-1 趟）。写好后点击“提交代码给AI检查”让我看看吧！'
   }
 ];
 
 export default function App() {
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [input, setInput] = useState('');
-  const [code, setCode] = useState('# 在这里编写你的Python代码\n');
+  const [code, setCode] = useState('arr = [64, 34, 25, 12, 22, 11, 90]\nn = len(arr)\n\n# 请在下面开始编写你的冒泡排序代码（不需要写 def 函数）\n');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
